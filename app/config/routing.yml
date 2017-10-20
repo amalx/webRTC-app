@@ -1,3 +1,34 @@
+oc_user_company:
+    resource: "@OCUserBundle/Controller/CompanyController.php"
+    type:     annotation
+
+oc_user_categories:
+    resource: "@OCUserBundle/Controller/CategoriesController.php"
+    type:     annotation
+
+oc_user_user:
+    resource: "@OCUserBundle/Controller/UserController.php"
+    type:     annotation
+
+oc_user_messages:
+    resource: "@OCUserBundle/Controller/MessagesController.php"
+    type:     annotation
+
+oc_user_messages:
+    resource: "@OCUserBundle/Controller/MessagesController.php"
+    type:     annotation
+
+oc_user_user:
+    resource: "@OCUserBundle/Controller/UserController.php"
+    type:     annotation
+
+platform_advert:
+    resource: "@PlatformBundle/Controller/AdvertController.php"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 oc_user:
     resource: "@OCUserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -10,13 +41,38 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
-login:
-    path: /login
-    defaults:
-        _controller: OCUserBundle:Security:login
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-login_check:
-    path: /login_check
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
 
-logout:
-    path: /logout
+fos_user_register:
+    path: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_security_login:
+    path:  /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+fos_user_security_check:
+    path:  /login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+
+fos_user_security_logout:
+    path:  /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+oc_admin:
+    path : /admin
+    defaults: { _controller	: SonataAdminBundle:CoreController:dashboardAction }
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

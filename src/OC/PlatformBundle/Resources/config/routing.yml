@@ -8,16 +8,35 @@ oc_platform_home:
         page: \d*
 
 oc_platform_view:
-    path:      /advert/{id}
+    path:      /advert/view
     defaults:
         _controller: PlatformBundle:Advert:view
-    requirements:
-        id: \d+
+
+oc_platform_viewad:
+    path:      /advert/viewad/{id}
+    defaults:
+        _controller: PlatformBundle:Advert:viewad
+
+oc_platform_script:
+    path:      /script
+    defaults:
+        _controller: PlatformBundle:Advert:script
+oc_platform_form:
+    path:      /form
+    defaults:
+        _controller: PlatformBundle:Advert:form
+
 
 oc_platform_add:
     path:      /add
     defaults:
         _controller: PlatformBundle:Advert:add
+
+call:
+    path:      /call
+    defaults:
+        _controller: PlatformBundle:Advert:call
+
 
 oc_platform_edit:
     path:      /edit/{id}

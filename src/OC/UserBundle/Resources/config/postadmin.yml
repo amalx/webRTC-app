@@ -1,0 +1,12 @@
+services:
+    app.admin.postadmin:
+        class:  OC\UserBundle\Admin\AdminMsg
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Evo", label: "Messages" }
+        arguments:
+            - ~
+            - OC\UserBundle\Entity\Messages
+            - ~
+        calls:
+            - [ setTranslationDomain, [OCUserBundle]]
+        public: true

@@ -1,0 +1,12 @@
+services:
+    app.admin.post:
+        class:  OC\UserBundle\Admin\Admin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Evo", label: "Users" }
+        arguments:
+            - ~
+            - OC\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [OCUserBundle]]
+        public: true

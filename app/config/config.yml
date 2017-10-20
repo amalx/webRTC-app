@@ -2,21 +2,27 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@OCUserBundle/Resources/config/admin.yml" }
+    - { resource: "@OCUserBundle/Resources/config/postadmin.yml" }
+    - { resource: "@OCUserBundle/Resources/config/category.yml" }
+    - { resource: "@OCUserBundle/Resources/config/company.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    msg_directory: '%kernel.project_dir%/web/uploads/msg'
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator:      { fallbacks: ["%locale%"] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
     form: ~
-    csrf_protection: ~
+    csrf_protection:
+        enabled: true
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
     templating:
@@ -26,7 +32,7 @@ framework:
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        save_path: ~
     fragments: ~
     http_method_override: true
     assets: ~
@@ -39,6 +45,8 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
          - 'bootstrap_3_layout.html.twig'
+    globals:
+        fos_csrf_provider: "@security.csrf.token_manager"
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -77,8 +85,23 @@ fos_user:
         address: amalrahal@outlook.fr
         sender_name: usr
 
+
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.admin.block.search_result:
+            contexts:   [admin]
+
+sonata_admin:
+    title:      Evolutio
+    title_logo: img/evo.png

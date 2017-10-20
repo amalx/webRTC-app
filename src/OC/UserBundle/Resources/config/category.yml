@@ -1,0 +1,12 @@
+services:
+    app.admin.category:
+        class:  OC\UserBundle\Admin\AdminCategory
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Evo", label: "Categories" }
+        arguments:
+            - ~
+            - OC\UserBundle\Entity\Categories
+            - ~
+        calls:
+            - [ setTranslationDomain, [OCUserBundle]]
+        public: true

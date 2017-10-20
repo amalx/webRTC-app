@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Advert</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ advert.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if advert.date %}{{ advert.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ advert.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ advert.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ advert.company }}</td>
+            </tr>
+            <tr>
+                <th>Address1</th>
+                <td>{{ advert.address1 }}</td>
+            </tr>
+            <tr>
+                <th>Address2</th>
+                <td>{{ advert.address2 }}</td>
+            </tr>
+            <tr>
+                <th>Address3</th>
+                <td>{{ advert.address3 }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ advert.city }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ advert.state }}</td>
+            </tr>
+            <tr>
+                <th>Province</th>
+                <td>{{ advert.province }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ advert.phone }}</td>
+            </tr>
+            <tr>
+                <th>Phone2</th>
+                <td>{{ advert.phone2 }}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ advert.comments }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ advert.birthdate }}</td>
+            </tr>
+            <tr>
+                <th>Postdate</th>
+                <td>{{ advert.postdate }}</td>
+            </tr>
+            <tr>
+                <th>Custom1</th>
+                <td>{{ advert.custom1 }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ advert.zip }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ advert.email }}</td>
+            </tr>
+            <tr>
+                <th>Countrycode</th>
+                <td>{{ advert.countryCode }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ advert.gender }}</td>
+            </tr>
+            <tr>
+                <th>Vendorcode</th>
+                <td>{{ advert.vendorCode }}</td>
+            </tr>
+            <tr>
+                <th>Custom2</th>
+                <td>{{ advert.custom2 }}</td>
+            </tr>
+            <tr>
+                <th>Nameoncard</th>
+                <td>{{ advert.NameOnCard }}</td>
+            </tr>
+            <tr>
+                <th>Billingaddress</th>
+                <td>{{ advert.BillingAddress }}</td>
+            </tr>
+            <tr>
+                <th>City1</th>
+                <td>{{ advert.city1 }}</td>
+            </tr>
+            <tr>
+                <th>State1</th>
+                <td>{{ advert.state1 }}</td>
+            </tr>
+            <tr>
+                <th>Zip1</th>
+                <td>{{ advert.zip1 }}</td>
+            </tr>
+            <tr>
+                <th>Cctype</th>
+                <td>{{ advert.ccType }}</td>
+            </tr>
+            <tr>
+                <th>Ccnumber</th>
+                <td>{{ advert.ccNumber }}</td>
+            </tr>
+            <tr>
+                <th>Cvvcode</th>
+                <td>{{ advert.cvvCode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('advert_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

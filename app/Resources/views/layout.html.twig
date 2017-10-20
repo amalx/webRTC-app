@@ -4,44 +4,67 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>{% block title %}OC Plateforme{% endblock %}</title>
-
-  {% block stylesheets %}
-    {# On charge le CSS de bootstrap depuis le site directement #}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  {% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/gif" href="{{asset('img/favicon.ico')}}" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="{{asset('css/ctxSip.css')}}" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-  <div class="container">
-    <div id="header" >
 
-    </div>
 
+<body >
+  <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            </button>
+            <a  href="https://www.e-volut.io/" style="font-size:160%;" > <img src="img/evo.png" style="width:44px;height:31px;">Evolutio</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('oc_admin') }}">Dashboard</a></li>
+                <li><a href="{{ path('oc_platform_view') }}">Annonces</a></li>
+                <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a> {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">Connexion</a> {% endif %}</li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+      </nav><!-- /.navbar -->
+      </div>
+
+<div class="container">
     <div class="row">
-      <div id="dropdown-menu" class="col-md-3">
-        <h3>appel </h3>
-
-      </div>
-      <div id="content" class="col-md-9">
+       <div  class="col-md-3">
+        {% block mobile %}
+        {% endblock %} </div>
+      <div	class="col-md-8">
+        <div	class="content">
         {% block body %}
-        {% endblock %}
-      </div>
+        {% endblock %} </div> </div>
     </div>
 
-    <hr>
-
-    <footer>
+<footer>
       <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
-    </footer>
-  </div>
+</footer>
+</div>
+
+<iframe name="frame"></iframe>
+
 
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="{{asset('scripts/moment.js/moment.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('scripts/SIP.js/sip.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('scripts/config.js')}}"></script>
+    <script type="text/javascript" src="{{asset('scripts/app.js')}}"></script>
+
   {% endblock %}
 
 </body>

@@ -1,7 +1,77 @@
 {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}
 
-<h3>Formulaire d'annonce</h3>
+<link href="{{asset('css/stylesheet.css')}}" rel="stylesheet" type="text/css" />
 
-<div class="well">
-  {{ form(form) }}
+<div class="contentform">
+    {{ form_start(form ,{'attr':  {'target': 'frame' }      }) }}
+    <div class="contentform">
+    <div class="leftcontact">
+          <h3>Customer Information</h3>
+          {{ form_widget(form.callerId, { 'attr': {'class': 'callerId','placeholder': 'Caller Id' ,'value': ''}} ) }}
+          {{ form_row(form.date) }}
+            <div class="leftcontact">
+                {{ form_widget(form.firstName, { 'attr': {'class' : 'firstName', 'placeholder': 'First Name' ,'value': ''  }} ) }}
+                {{ form_widget(form.company, { 'attr': {'class': 'company','placeholder': 'Company', 'value': ''}} ) }}
+                {{ form_widget(form.address1, { 'attr': {'class': 'form-gp','placeholder': 'Address 1' ,'value': '' }} ) }}
+                {{ form_widget(form.address2, { 'attr': {'class': 'form-gp','placeholder': 'Address 2' ,'value': ''}} ) }}
+                {{ form_widget(form.city, { 'attr': {'class': 'form-gp','placeholder': 'City' ,'value': ''}} ) }}
+                {{ form_widget(form.province, { 'attr': {'class': 'form-gp','placeholder': 'Province','value': ''}} ) }}
+                {{ form_widget(form.phone, { 'attr': {'class': 'form-gp','placeholder': 'Phone','value': ''}} ) }}
+                {{ form_widget(form.custom1, { 'attr': {'class': 'form-gp','placeholder': 'Custom 1','value': ''}} ) }}
+                {{ form_widget(form.custom2, { 'attr': {'class': 'form-gp','placeholder': 'Custom 2','value': ''}} ) }}
+             </div>
+             <div class="rightcontact">
+                {{ form_widget(form.lastName, { 'attr': {'class': 'lastName' ,'placeholder': 'Last Name' ,'value': '' }} ) }}
+                {{ form_widget(form.address3, { 'attr': {'class': 'form-gp','placeholder': 'Address 3','value': ''}} ) }}
+                    <div class="contentform">
+                          <div class="leftcontact">
+                          {{ form_widget(form.state, { 'attr': {'class': 'form-gp','placeholder': 'State','value': ''}} ) }} </div>
+                          <div class="rightcontact">
+                          {{ form_widget(form.zip, { 'attr': {'class': 'form-gp','placeholder': 'zip','value': ''}} ) }} </div>
+                    </div>
+                 {{ form_widget(form.email, { 'attr': {'class': 'form-gp','placeholder': 'Email','value': ''}} ) }}
+                    <div class="contentform">
+                           <div class="leftcontact">
+                           {{ form_widget(form.countryCode, { 'attr': {'class': 'form-gp','placeholder': 'Country Code','value': ''}} ) }}</div>
+                           <div class="rightcontact">
+                           {{ form_widget(form.phone2, { 'attr': {'class': 'form-gp','placeholder': 'Phone 2','value': ''}} ) }}</div>
+                     </div>
+                {{ form_widget(form.comments, { 'attr': {'class': 'form-gp','placeholder': 'Comments','value': ''}} ) }}
+                {{ form_row(form.gender) }}
+                {{ form_widget(form.gender, { 'attr': {'class': 'form-gp'}} ) }}
+                {{ form_widget(form.vendorCode, { 'attr': {'class': 'form-gp','placeholder': 'vendorCode','value': ''}} ) }}
+          </div>
+          {{ form_label(form.birthdate) }}
+          {{ form_widget(form.birthdate) }}
+          {{ form_row(form.postdate) }}
+          {{ form_widget(form.postdate) }}
+    </div>
+    </div>
+
+    <div class="rightcontact">
+          <h3>Additional Forms</h3>
+          <p style="color:blue"> Details as they appear On CC (if different)</p>
+
+          {{ form_widget(form.NameOnCard, { 'attr': {'class': 'form-gp','placeholder': 'Name On Card','value': ''}} ) }}
+          {{ form_widget(form.BillingAddress, { 'attr': {'class': 'form-gp','placeholder': 'Billing Address','value': ''}} ) }}
+          {{ form_widget(form.city1, { 'attr': {'class': 'form-gp','placeholder': 'City','value': ''}} ) }}
+          {{ form_widget(form.state1, { 'attr': {'class': 'form-gp','placeholder': 'State','value': ''}} ) }}
+          {{ form_widget(form.zip1, { 'attr': {'class': 'form-gp','placeholder': 'ZIP','value': ''}} ) }}
+          {{ form_widget(form.ccType, { 'attr': {'class': 'form-gp','placeholder': 'cc Type','value': ''}} ) }}
+          {{ form_widget(form.ccNumber, { 'attr': {'class': 'form-gp','placeholder': 'cc Number','value': ''}} ) }}
+          {{ form_widget(form.cvvCode, { 'attr': {'class': 'form-gp','placeholder': 'cvv Code','value': ''}} ) }}
+    </div>
+    </div>
+
+
+
+
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    {{ form_widget(form.save   , { 'attr': {'class': 'submit'}}) }}
+    {{ form_end(form) }}
+
+
 </div>

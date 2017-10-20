@@ -1,12 +1,12 @@
 var user = {
     //  User Name
-    "User" : "amalrh",
+    "User" : "102",
     //  Password
-    "Pass" : "9987689",
+    "Pass" : "evolutio2017",
     //  Auth Realm
-    "Realm"   : "amalrh@ip.com",
+    "Realm"   : "sip.voipsos.net",
     // Display Name
     "Display" : "amalrh",
     // WebSocket URL
-    "WSServer"  : "amalrh@ip.com"
+    "WSServer"  : "wss://sip.voipsos.net:7443"
 };

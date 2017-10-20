@@ -1,0 +1,14 @@
+# src/OC/UserBundle/Resources/config/category.yml
+
+services:
+    app.admin.company:
+        class:  OC\UserBundle\Admin\AdminCompany
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Evo", label: "Company" }
+        arguments:
+            - ~
+            - OC\UserBundle\Entity\Company
+            - ~
+        calls:
+            - [ setTranslationDomain, [OCUserBundle]]
+        public: true

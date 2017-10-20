@@ -5,6 +5,7 @@ var ctxSip;
 $(document).ready(function() {
 
 
+
     if (typeof(user) === 'undefined') {
         user = JSON.parse(localStorage.getItem('SIPCreds'));
     }
@@ -93,10 +94,29 @@ $(document).ready(function() {
             if (newSess.direction === 'incoming') {
                 status = "Incoming: "+ newSess.displayName;
                 ctxSip.startRingTone();
+                console.log('*********************************************');
+                get_customer_info(newSess.remoteIdentity.uri.user);
             } else {
                 status = "Trying: "+ newSess.displayName;
                 ctxSip.startRingbackTone();
             }
+
+            function get_customer_info(caller_number) {
+              console.log("###########get_customer_info###############") ;
+              $.ajax({
+                    type: "POST",
+                    url: "http://127.0.0.1:8000/call",
+                    data: {caller_number : caller_number},
+                    dataType:  "json",
+                    success: function (response)
+                    {
+                      $("#form_firstName").val(response.firstName);
+                      $("#form_lastName").val(response.lastName);
+                      console.log(response);
+                    }
+
+                  });
+              }
 
             ctxSip.logCall(newSess, 'ringing');
 
@@ -554,7 +574,7 @@ $(document).ready(function() {
         ctxSip.setStatus("Disconnected");
 
         // disable phone
-        ctxSip.setError(true, 'Websocket Disconnected.', 'An Error occurred connecting to the websocket.');
+        //ctxSip.setError(true, 'Websocket Disconnected.', 'An Error occurred connecting to the websocket.');
 
         // remove existing sessions
         $("#sessions > .session").each(function(i, session) {
@@ -607,6 +627,12 @@ $(document).ready(function() {
         ctxSip.newSession(s);
     });
 
+
+
+
+
+
+
     // Auto-focus number input on backspace.
     $('#sipClient').keydown(function(event) {
         if (event.which === 8) {
@@ -620,6 +646,7 @@ $(document).ready(function() {
             ctxSip.phoneCallButtonPressed();
         }
     });
+
 
     $('.digit').click(function(event) {
         event.preventDefault();

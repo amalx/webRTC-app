@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adverts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Company</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>Address3</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Province</th>
+                <th>Phone</th>
+                <th>Phone2</th>
+                <th>Comments</th>
+                <th>Birthdate</th>
+                <th>Postdate</th>
+                <th>Custom1</th>
+                <th>Zip</th>
+                <th>Email</th>
+                <th>Countrycode</th>
+                <th>Gender</th>
+                <th>Vendorcode</th>
+                <th>Custom2</th>
+                <th>Nameoncard</th>
+                <th>Billingaddress</th>
+                <th>City1</th>
+                <th>State1</th>
+                <th>Zip1</th>
+                <th>Cctype</th>
+                <th>Ccnumber</th>
+                <th>Cvvcode</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for advert in adverts %}
+            <tr>
+                <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
+                <td>{% if advert.date %}{{ advert.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ advert.firstName }}</td>
+                <td>{{ advert.lastName }}</td>
+                <td>{{ advert.company }}</td>
+                <td>{{ advert.address1 }}</td>
+                <td>{{ advert.address2 }}</td>
+                <td>{{ advert.address3 }}</td>
+                <td>{{ advert.city }}</td>
+                <td>{{ advert.state }}</td>
+                <td>{{ advert.province }}</td>
+                <td>{{ advert.phone }}</td>
+                <td>{{ advert.phone2 }}</td>
+                <td>{{ advert.comments }}</td>
+                <td>{{ advert.birthdate }}</td>
+                <td>{{ advert.postdate }}</td>
+                <td>{{ advert.custom1 }}</td>
+                <td>{{ advert.zip }}</td>
+                <td>{{ advert.email }}</td>
+                <td>{{ advert.countryCode }}</td>
+                <td>{{ advert.gender }}</td>
+                <td>{{ advert.vendorCode }}</td>
+                <td>{{ advert.custom2 }}</td>
+                <td>{{ advert.NameOnCard }}</td>
+                <td>{{ advert.BillingAddress }}</td>
+                <td>{{ advert.city1 }}</td>
+                <td>{{ advert.state1 }}</td>
+                <td>{{ advert.zip1 }}</td>
+                <td>{{ advert.ccType }}</td>
+                <td>{{ advert.ccNumber }}</td>
+                <td>{{ advert.cvvCode }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('advert_show', { 'id': advert.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

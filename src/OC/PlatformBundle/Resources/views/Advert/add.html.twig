@@ -1,0 +1,83 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "PlatformBundle::layout.html.twig" %}
+{% block mobile %}
+{{ include("PlatformBundle:Advert:mobile.html.twig") }}
+
+{% endblock  mobile %}
+{% block body %}
+<style>
+      #nav ul {
+
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      #nav ul li {
+        float: left;
+      }
+      #nav ul li a {
+        display: inline-block;
+
+      }
+      #content {
+
+      }
+</style>
+
+
+
+
+ <nav id="nav" >
+
+ <ul>
+   <li><a href="#" data-target="http://127.0.0.1:8000/form"  class="btn btn-default"  style="background-color: #e7e7e7; color: black; font-size: 20px; padding: 2px 24px; border-radius: 12px;  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">Form </a></li>
+   <li><a href="#" data-target="http://127.0.0.1:8000/script"  class="btn btn-default"  style="background-color: #e7e7e7; color: black; font-size: 20px; padding: 2px 24px; border-radius: 12px;  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);"> Script </a></li>
+ </ul>
+ </nav>
+ <div id="content">
+
+
+{{ include('PlatformBundle:Advert:form.html.twig') }}
+
+ </div>
+ <p>
+     {# On affiche tous les messages flash dont le nom est « info » #}
+     {% for message in app.session.flashbag.get('info') %}
+       <p>Message flash : {{ message }}</p>
+     {% endfor %}
+   </p>
+
+   <p>
+
+{% endblock body %}
+
+
+{% block javascripts %}
+{{ parent()}}
+
+
+
+
+ <script>
+
+  $(document).ready(function(){
+
+    var trigger = $('#nav ul li a'),
+        container = $('#content');
+
+     trigger.on('click', function(){
+
+      var $this = $(this),
+        target = $this.data('target');
+
+
+      container.load(target );
+
+
+      return false;
+    });
+  });
+</script>
+
+{% endblock javascripts %}
